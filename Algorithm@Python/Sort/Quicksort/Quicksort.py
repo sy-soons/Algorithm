@@ -5,7 +5,7 @@ def quicksort(low, high):
 	global unsorted
 	if(low < hi):
 		#find pivot
-		p = _partition(low, high)
+		p = partition(low, high)
 		#pivot's left side, call quicksort(recursive function)
 		quicksort(low, p-1)
 		#pivot's left side, call quicksort(recursive function)
