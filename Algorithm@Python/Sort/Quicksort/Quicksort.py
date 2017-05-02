@@ -1,18 +1,18 @@
-unsorted = [12,9,3,7,14,11,6,2,10,5]
-#sorted = list(unsorted)
+unsorted = [12,9,3,7,4,11,6,2,10,5]
+sorted = list(unsorted)
 
 def swap(ix, iy):
-	global unsorted
-	temp = unsorted[ix]
-	unsorted[ix] = unsorted[iy]
-	unsorted[iy] = temp
+	global sorted
+	temp = sorted[ix]
+	sorted[ix] = sorted[iy]
+	sorted[iy] = temp
 
 def quicksort(low, high):
 	global unsorted
 	if(low < high):
 		#find pivot
 		p = partition(low, high)
-		print 'pivot :', p, 'value : ',unsorted[p],'|',low,'|',high
+		#print 'pivot :', p, 'value : ',unsorted[p],'|',low,'|',high
 		#pivot's left side, call quicksort(recursive function)
 		if(p>0):
 			quicksort(low, p-1)
@@ -29,28 +29,48 @@ def partition(low, high):
 	left = low
 	right = high-1
 	
-	#declare temp buffer
-	len_temp_sorted = high-low+1
-	temp_sorted = [0]*len_temp_sorted
-	
+	global sorted
+	for idx in range(0, len(unsorted)):
+		sorted[idx] = unsorted[idx]
+
+	print '============================'
+	print 'initial condition : ', left,',', right
+		
 	for i in range(low, high):
 		if(left == right):
+			#swap(left, pivot_idx)
+			temp = pivot
+			sorted[pivot_idx] = sorted[left]
+			sorted[left] = temp
 			ret_pivot = left
-			swap(left, pivot_idx)
+
+			print 'pivot:', pivot, ' L:', left, ' R:', right, 'P_I:', pivot_idx
+			for cnt in range(0, len(sorted)):
+				print 'sorted : ', sorted[cnt]
+			
 			break
-		if(unsorted[i] > pivot):
-			print 'In partition, right : ', right, ',i : ', i, ', len_temp :', len_temp_sorted
-			temp_sorted[right] = unsorted[i]
+		if(unsorted[i] >= pivot):
+			#print 'more than pivot, ', unsorted[i], pivot
+			#print 'In partition, right : ', right, ',i : ', i, ', len_temp :', len_temp_sorted
+			sorted[right] = unsorted[i]
 			right-=1
 		elif(unsorted[i] < pivot):
-			temp_sorted[left] = unsorted[i]
-			left+=1
-	
+			print 'less than pivot, ', unsorted[i], pivot
+			sorted[left] = unsorted[i]
+			left+=1	
+
+	#copy sorted list to unsorted list
+	for j in range(low,high+1):
+		unsorted[j] = sorted[j]
+				
 	return ret_pivot
 
 #quicksort(0, len(unsorted))
 quicksort(0, 9)
 
+print '############### finish sorting ###############'
+for i in range(0, len(unsorted)):
+	print 'unsorted[', i, '] : ', unsorted[i]
 
 #check swap function
 '''
