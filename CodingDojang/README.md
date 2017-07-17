@@ -27,7 +27,7 @@ numGoat30 --> num_goat_3_0
 그 뒤의 문자들을(ojang) 모두 1칸씩 이동  
   
 
-2. 탭을 공백문자로 바꾸기. 
+2. 탭을 공백문자로 바꾸기.  
 ====================  
 http://codingdojang.com/scode/405?answer_mode=hide  
 문제)  
