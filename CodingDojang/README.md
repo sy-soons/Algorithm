@@ -26,7 +26,7 @@ numGoat30 --> num_goat_3_0
 첫부분이 있던 위치(D가 있던 위치에)에 '_'를 넣고,  
 그 뒤의 문자들을(ojang) 모두 1칸씩 이동  
   
-
+  
 2. 탭을 공백문자로 바꾸기.  
 ====================  
 http://codingdojang.com/scode/405?answer_mode=hide  
